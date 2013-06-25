@@ -16,6 +16,8 @@ class test_19198(GaiaTestCase):
     _TestMsg2 = "Second message"
     _TestMsg3 = "Third message"
     
+    _RESTART_DEVICE = True
+
     def setUp(self):
         #
         # Set up child objects...
@@ -34,17 +36,15 @@ class test_19198(GaiaTestCase):
         
         
     def tearDown(self):
-#         self.messages.waitForSMSNotifier("222000",5)
-#         self.UTILS.clearAllStatusBarNotifs()
-
         self.UTILS.reportResults()
         
     def test_run(self):
         #
         # Launch messages app & delete all Threads
+        # Make sure we have no threads (currently blocked - use _RESTART_DEVICE instead).
         #
         self.messages.launch()
-        self.messages.deleteAllThreads()
+#         self.messages.deleteAllThreads()
         
         #
         # Create and send some new tests messages.
@@ -73,15 +73,7 @@ class test_19198(GaiaTestCase):
         #
         # Tap delete
         #
-        x= self.UTILS.getElement(DOM.Messages.edit_msgs_delete_btn, "Delete messages button" )
-        x.tap()
-        
-        self.marionette.switch_to_frame()        
-        x = self.UTILS.getElement(DOM.GLOBAL.modal_ok_button, "OK button in question dialog")
-        x.tap()
-        
-        self.UTILS.switchToFrame(*DOM.Messages.frame_locator)
-        time.sleep(2)
+        self.messages.deleteSelectedMessages()
         
         #
         # Check conversation isn't there anymore.
@@ -89,4 +81,5 @@ class test_19198(GaiaTestCase):
         self.UTILS.waitForNotElements(("xpath", DOM.Messages.thread_selector_xpath % self.target_telNum),"Thread")
  
         time.sleep(1)
-        self.UTILS.screenShotOnErr()  
+        fnam = self.UTILS.screenShotOnErr()
+        self.UTILS.logResult("info", "Screenshot of final position:", fnam)  

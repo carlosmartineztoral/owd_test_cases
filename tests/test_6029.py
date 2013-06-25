@@ -13,6 +13,8 @@ from OWDTestToolkit import *
 class test_6029(GaiaTestCase):
     _Description = "[SMS] CLONE - Verify the textfield item."
     
+    _RESTART_DEVICE = True
+
     def setUp(self):
         #
         # Set up child objects...
@@ -24,8 +26,7 @@ class test_6029(GaiaTestCase):
         #
         # Import contact (adjust the correct number).
         #
-        self.telNum = self.UTILS.get_os_variable("GLOBAL_TARGET_SMS_NUM")
-        self.UTILS.logComment("Using target telephone number " + self.telNum)
+        self._num = self.UTILS.get_os_variable("GLOBAL_TARGET_SMS_NUM")
 
     def tearDown(self):
         self.UTILS.reportResults()
@@ -33,15 +34,16 @@ class test_6029(GaiaTestCase):
     def test_run(self):
         #
         # Launch messages app.
+        # Make sure we have no threads (currently blocked - use _RESTART_DEVICE instead).
         #
         self.messages.launch()
-        self.messages.deleteAllThreads()
+#         self.messages.deleteThreads([self._num])
   
         #
         # Send a message to create a thread (use number, not name as this
         # avoids some blocking bugs just now). 
         #
-        self.messages.createAndSendSMS( [self.telNum], "Test 1")
+        self.messages.createAndSendSMS( [self._num], "Test 1")
         returnedSMS = self.messages.waitForReceivedMsgInThisThread()
   
         self.messages.enterSMSMsg("Test 2")
@@ -60,12 +62,12 @@ class test_6029(GaiaTestCase):
         #
         # Enter the thread.
         #
-        self.messages.openThread(self.telNum)
+        self.messages.openThread(self._num)
          
         #
         # Find the first message.
         #
-        x = self.UTILS.getElements(DOM.Messages.thread_messages, "Thread messages", False)
+        x = self.UTILS.getElements(DOM.Messages.message_list, "Message list", False)
         pos=0
         for i in x:
             if i.find_element("xpath", "//p[text()='Test 1']"):

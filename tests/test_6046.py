@@ -12,8 +12,8 @@ import time
 #
 from tests.mock_data.contacts import MockContacts
 
-class test_19193(GaiaTestCase):
-    _Description = "[SMS] Receive an SMS from a contact with long name."
+class test_6046(GaiaTestCase):
+    _Description = "CLONE - Delete a contact and verify that the SMS list now shows the number"
     
     _TestMsg     = "Test."
 
@@ -26,11 +26,10 @@ class test_19193(GaiaTestCase):
         self.contacts   = Contacts(self)
         self.messages   = Messages(self)
         
-
         #
         # Prepare the contact we're going to insert.
         #
-        self.contact_1 = MockContacts().Contact_longName
+        self.contact_1 = MockContacts().Contact_1
 
         #
         # Establish which phone number to use.
@@ -39,23 +38,14 @@ class test_19193(GaiaTestCase):
         self.UTILS.logComment("Using target telephone number " + self.contact_1["tel"]["value"])
         
         #
-        # Add this contact (quick'n'dirty method - we're just testing sms, no adding a contact).
+        # Import this contact (quick'n'dirty method - we're just testing sms, no adding a contact).
         #
         self.data_layer.insert_contact(self.contact_1)
 
-        
-        
     def tearDown(self):
         self.UTILS.reportResults()
         
     def test_run(self):
-        self.messages.launch()
-        
-        
-        self.messages.createAndSendSMS( [self.contact_1["tel"]["value"]], 
-                                        "(Just bypassing bug 867119!)")
-        returnedSMS = self.messages.waitForReceivedMsgInThisThread()
-        
         #
         # Launch contacts app.
         #
@@ -79,13 +69,7 @@ class test_19193(GaiaTestCase):
         time.sleep(2)
         self.marionette.switch_to_frame()
         self.UTILS.switchToFrame(*DOM.Messages.frame_locator)
-
-        #
-        # TEST: this automatically opens the 'send SMS' screen, so
-        # check the correct name is in the "To:" field of this sms.
-        #
-        self.messages.checkIsInToField(self.contact_1['name'])
-        
+    
         #
         # Create SMS.
         #
@@ -108,5 +92,16 @@ class test_19193(GaiaTestCase):
         sms_text = returnedSMS.text
         self.UTILS.TEST((sms_text.lower() == self._TestMsg.lower()), 
             "SMS text = '" + self._TestMsg + "' (it was '" + sms_text + "').")
-
+        
+        #
+        # Delete the contact
+        #
+        self.contacts.launch()
+        self.contacts.deleteContact(self.contact_1["name"])
+        
+        #
+        # Go back to SMS app and try to open the thread by phone number
+        #
+        self.messages.launch()
+        self.messages.openThread(self.contact_1["tel"]["value"])
 

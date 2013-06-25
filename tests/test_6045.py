@@ -11,8 +11,8 @@ from OWDTestToolkit import *
 #
 from tests.mock_data.contacts import MockContacts
 
-class test_6037(GaiaTestCase):
-    _Description = "[SMS] CLONE - Verify that If the name of the contact is not empty The name of the contact as the main header."
+class test_6038(GaiaTestCase):
+    _Description = "CLONE - Edit a contact name and verify that the SMS list now shows the new name"
     
     def setUp(self):
         #
@@ -21,6 +21,7 @@ class test_6037(GaiaTestCase):
         GaiaTestCase.setUp(self)
         self.UTILS      = UTILS(self)
         self.messages   = Messages(self)
+        self.contacts   = Contacts(self)
         
         #
         # Import contact (adjust to the correct number).
@@ -44,9 +45,24 @@ class test_6037(GaiaTestCase):
         # avoids some blocking bugs just now). 
         #
         self.messages.createAndSendSMS( [self.Contact_1["tel"]["value"]], "Test message.")
-        returnedSMS = self.messages.waitForReceivedMsgInThisThread()
+        self.messages.waitForReceivedMsgInThisThread()
         
         #
-        # Examine the header.
+        # Open contacts app and modify the contact used to send the SMS in the previous step
         #
-        self.UTILS.headerCheck(self.Contact_1["name"])
+        self.contacts.launch()
+        self.Contact_2 = MockContacts().Contact_2
+        self.Contact_2["tel"]["value"] = self.UTILS.get_os_variable("GLOBAL_TARGET_SMS_NUM")
+        self.UTILS.logComment("Using target telephone number " + self.Contact_2["tel"]["value"])
+        self.contacts.editContact(self.Contact_1,self.Contact_2)
+        
+        #
+        # Re-launch messages app.
+        #
+        self.messages.launch()
+        
+        #
+        # Verify the thread now contains the name of the contact instead of the phone number
+        #
+        self.UTILS.logComment("Trying to open the thread with name: " + self.Contact_2["name"])
+        self.messages.openThread(self.Contact_2["name"])

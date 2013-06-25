@@ -11,10 +11,12 @@ from OWDTestToolkit import *
 #
 
 class test_19196(GaiaTestCase):
-    _Description = "(BLOCKED BY BUG 879816) [SMS] Send/Receive a new SMS when the conversation thread is empty."
+    _Description = "[SMS] Send/Receive a new SMS when the conversation thread is empty."
     
     _TestMsg     = "Test message."
     
+    _RESTART_DEVICE = True
+
     def setUp(self):
         #
         # Set up child objects...
@@ -35,19 +37,15 @@ class test_19196(GaiaTestCase):
         self.UTILS.reportResults()
         
     def test_run(self):
-
-        # Could use this, but it doesn't seem to be working.        
-#         self.UTILS.TEST(self.data_layer.delete_all_sms(), "Delete all SMS's.")
-        
         #
         # Launch messages app.
         #
         self.messages.launch()
         
         #
-        # Delete all threads.
+        # Make sure we have no threads (currently blocked - use _RESTART_DEVICE instead).
         #
-        self.messages.deleteAllThreads()
+#         self.messages.deleteAllThreads()
         
         #
         # Create and send a new test message.

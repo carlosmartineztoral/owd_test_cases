@@ -1,33 +1,3 @@
-WARNING: USING THESE TESTS WILL RESULT IN ALL DATA BEING REMOVED FROM THE DEVICE!
-=================================================================================
-
-
-
-#Instructions for setting up and running automated test cases.
-
-<b>1.</b> Clone and install the OWD_TEST_TOOLKIT repository (https://github.com/roydude/OWD_TEST_TOOLKIT).
-
-<b>2.</b> Type:
-
-<pre>
-./run_tests.sh
-</pre>
-
-... or specify particular test suites, like this:
-
-<pre>
-./run_tests.sh {REGRESSION}
-</pre>
-
-... or specify particular test numbers, like this:
-
-<pre>
-./run_tests.sh 7 8 21 40 41
-</pre>
-
-For more details, please refer to the README.md for OWD_TEST_TOOLKIT.
-
-
 <!--testcoverage-->
 TESTS COVERED
 =============
@@ -37,7 +7,7 @@ TESTS COVERED
   </tr>
 
   <tr>
-    <td  align=center>19180</td><td  align=left>[FACEBOOK] (BLOCKED BY BUG 879823) Unlink all Facebook contacts in the address book in a single step and verify the contacts who was linked to a facebook contacts.</td>
+    <td  align=center>19180</td><td  align=left>(BLOCKED BY BUG 879830) [FACEBOOK] Unlink all Facebook contacts in the address book in a single step and verify the contacts who was linked to a facebook contacts.</td>
   </tr>
 
   <tr>
@@ -93,7 +63,7 @@ TESTS COVERED
   </tr>
 
   <tr>
-    <td  align=center>19194</td><td  align=left>(BLOCKED BY BUG 876344) [SMS] Try send a sms to a contact while airplane is enabled (from sms app - use contact option).</td>
+    <td  align=center>19194</td><td  align=left>[SMS] Try send a sms to a contact while airplane is enabled (from sms app - use contact option).</td>
   </tr>
 
   <tr>
@@ -109,11 +79,11 @@ TESTS COVERED
   </tr>
 
   <tr>
-    <td  align=center>19198</td><td  align=left>[SMS] (BLOCKED BY BUG 879816) Delete all SMS in a conversation with several sms.</td>
+    <td  align=center>19198</td><td  align=left>(BLOCKED BY BUG 879816) [SMS] Delete all SMS in a conversation with several sms.</td>
   </tr>
 
   <tr>
-    <td  align=center>19199</td><td  align=left>[SMS] (BLOCKED BY BUG 879816) Delete a SMS in a conversation with several sms.</td>
+    <td  align=center>19199</td><td  align=left>(BLOCKED BY BUG 879816) [SMS] Delete a SMS in a conversation with several sms.</td>
   </tr>
 
   <tr>
@@ -121,11 +91,11 @@ TESTS COVERED
   </tr>
 
   <tr>
-    <td  align=center>19201</td><td  align=left>[SMS] (BLOCKED BY BUG 879816) Select some conversations and press delete.</td>
+    <td  align=center>19201</td><td  align=left>(BLOCKED BY BUG 879816) [SMS] Select some conversations and press delete.</td>
   </tr>
 
   <tr>
-    <td  align=center>19202</td><td  align=left>[SMS] (BLOCKED BY BUG 879816) Delete a sms conversation.</td>
+    <td  align=center>19202</td><td  align=left>(BLOCKED BY BUG 879816) [SMS] Delete a sms conversation.</td>
   </tr>
 
   <tr>
@@ -141,11 +111,11 @@ TESTS COVERED
   </tr>
 
   <tr>
-    <td  align=center>19224</td><td  align=left>[HOME SCREEN] Add and remove categories to everything.me grid.</td>
+    <td  align=center>19224</td><td  align=left>(BLOCKED BY BUG 885238) [HOME SCREEN] Add and remove categories to everything.me grid.</td>
   </tr>
 
   <tr>
-    <td  align=center>19225</td><td  align=left>(BLOCKED BY BUG 874362) [HOME SCREEN] Verify that if no connection available when selecting a category in everything.me the user will be notified about the need to have a network connection to use this functionality.</td>
+    <td  align=center>19225</td><td  align=left>[HOME SCREEN] Verify that if no connection available when selecting a category in everything.me the user will be notified about the need to have a network connection to use this functionality.</td>
   </tr>
 
   <tr>
@@ -161,11 +131,11 @@ TESTS COVERED
   </tr>
 
   <tr>
-    <td  align=center>19230</td><td  align=left>[HOME SCREEN] Verify that user can click on 'Add more categories' in everything.me grid so I am shown again the list and can add more categories.</td>
+    <td  align=center>19230</td><td  align=left>(BLOCKED BY BUG 885238) [HOME SCREEN] Verify that user can click on 'Add more categories' in everything.me grid so I am shown again the list and can add more categories.</td>
   </tr>
 
   <tr>
-    <td  align=center>19231</td><td  align=left>[HOME SCREEN] Verify that the user can uninstall a everything.me app through the grid edit mode.</td>
+    <td  align=center>19231</td><td  align=left>(BLOCKED BY BUG 879816) [HOME SCREEN] Verify that the user can uninstall a everything.me app through the grid edit mode.</td>
   </tr>
 
   <tr>
@@ -173,7 +143,7 @@ TESTS COVERED
   </tr>
 
   <tr>
-    <td  align=center>19245</td><td  align=left>[CAMERA] (BLOCKED BY BUG 879816) Delete a video just recorded.</td>
+    <td  align=center>19245</td><td  align=left>(BLOCKED BY BUG 879816) [CAMERA] Delete a video just recorded.</td>
   </tr>
 
   <tr>
@@ -181,11 +151,11 @@ TESTS COVERED
   </tr>
 
   <tr>
-    <td  align=center>19247</td><td  align=left>[CAMERA] (BLOCKED BY BUG 879816) Delete a picture just taken.</td>
+    <td  align=center>19247</td><td  align=left>(BLOCKED BY BUG 879816) [CAMERA] Delete a picture just taken.</td>
   </tr>
 
   <tr>
-    <td  align=center>19253</td><td  align=left>[Gallery] (BLOCKED BY BUG 879816) Select multiple pictures and delete them.</td>
+    <td  align=center>19253</td><td  align=left>(BLOCKED BY BUG 879816) [Gallery] Select multiple pictures and delete them.</td>
   </tr>
 
   <tr>
@@ -213,7 +183,7 @@ TESTS COVERED
   </tr>
 
   <tr>
-    <td  align=center>19355</td><td  align=left>[UTILITY TRAY] Activate/Deactivate ariplane  mode from Utility tray icon.</td>
+    <td  align=center>19355</td><td  align=left>[UTILITY TRAY] Activate/Deactivate ariplane mode from Utility tray icon.</td>
   </tr>
 
   <tr>
@@ -233,7 +203,7 @@ TESTS COVERED
   </tr>
 
   <tr>
-    <td  align=center>19392</td><td  align=left>[BASIC][FACEBOOK] (BLOCKED BY BUG 879823) Import Facebook contacts from contacts app settings.</td>
+    <td  align=center>19392</td><td  align=left>(BLOCKED BY BUG 883344 and 879823) [BASIC][FACEBOOK] Import Facebook contacts from contacts app settings.</td>
   </tr>
 
   <tr>
@@ -377,11 +347,15 @@ TESTS COVERED
   </tr>
 
   <tr>
+    <td  align=center>5976</td><td  align=left>CLONE - Press cancel button in the screen for select a contact phone number</td>
+  </tr>
+
+  <tr>
     <td  align=center>5980</td><td  align=left>[SMS] CLONE - Verify that If the contact has no phone number, a message stating that contact does not have a phone number is open up, and user is returned the contact list.</td>
   </tr>
 
   <tr>
-    <td  align=center>5983</td><td  align=left>[SMS] (BLOCKED BY BUG 876641) CLONE - Press delete all text button in contact name field.</td>
+    <td  align=center>5983</td><td  align=left>(BLOCKED BY BUG 876641) [SMS] CLONE - Press delete all text button in contact name field.</td>
   </tr>
 
   <tr>
@@ -417,10 +391,58 @@ TESTS COVERED
   </tr>
 
   <tr>
+    <td  align=center>6035</td><td  align=left>CLONE - Verify that If the name of the contact is empty: Phone Number as the main header.</td>
+  </tr>
+
+  <tr>
     <td  align=center>6037</td><td  align=left>[SMS] CLONE - Verify that If the name of the contact is not empty The name of the contact as the main header.</td>
   </tr>
 
   <tr>
     <td  align=center>6038</td><td  align=left>[SMS] CLONE - Verify that If the name of the contact is not empty The type of the phone and the phone carrier (as defined in the address book) as the secondary header.</td>
+  </tr>
+
+  <tr>
+    <td  align=center>6044</td><td  align=left>CLONE - Add a contact and verify that the SMS list now shows the name</td>
+  </tr>
+
+  <tr>
+    <td  align=center>6045</td><td  align=left>CLONE - Edit a contact name and verify that the SMS list now shows the new name</td>
+  </tr>
+
+  <tr>
+    <td  align=center>6046</td><td  align=left>CLONE - Delete a contact and verify that the SMS list now shows the number</td>
+  </tr>
+
+  <tr>
+    <td  align=center>6049</td><td  align=left>CLONE - Verify that the SMS conversation window shows the message preview (only one incoming SMS message in the conversation thread)</td>
+  </tr>
+
+  <tr>
+    <td  align=center>6050</td><td  align=left>CLONE - Verify that the SMS conversation window shows the message preview (only one outgoing SMS message in the conversation thread).</td>
+  </tr>
+
+  <tr>
+    <td  align=center>6056</td><td  align=left>CLONE - Try send a sms to a contact while airplane is enabled.</td>
+  </tr>
+
+  <tr>
+    <td  align=center>6057</td><td  align=left>CLONE - Try send a sms to a phone number (no contact) while airplane is enabled</td>
+  </tr>
+
+  <tr>
+    <td  align=center>6058</td><td  align=left>CLONE - Try send a sms creating a new thread while airplane is enabled.</td>
+  </tr>
+
+  <tr>
+    <td  align=center>6059</td><td  align=left>Try send a sms in an existing thread while airplane is enabled.</td>
+  </tr>
+
+  <tr>
+    <td  align=center>6060</td><td  align=left>CLONE - Try send a sms (after enabled and disabled airplane mode)</td>
+  </tr>
+
+  <tr>
+    <td  align=center>roy</td><td  align=left>blah </td>
   </tr>
 </table>
