@@ -49,8 +49,6 @@ class test_6038(GaiaTestCase):
         #
         # Examine the carrier.
         #
-        x = self.UTILS.getElement(DOM.Messages.type_and_carrier_field, "Type and carrier information")
-        
         expect = self.Contact_1["tel"]["type"]
         actual = self.messages.threadType()
         self.UTILS.TEST(expect == actual, "The type is listed as: '" + expect + "' (subheader was '" + actual + "').")
